@@ -1,0 +1,59 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <article class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+      {% assign m = post.date | date: "%-m" %}
+      {{ post.date | date: "%-d" }} de 
+      {% case m %}
+        {% when '1' %} Enero
+        {% when '2' %} Febrero
+        {% when '3' %} Marzo
+        {% when '4' %} Abril
+        {% when '5' %} Mayo
+        {% when '6' %} Junio
+        {% when '7' %} Julio
+        {% when '8' %} Agosto
+        {% when '9' %} Septiembre
+        {% when '10' %} Octubre
+        {% when '11' %} Noviembre
+        {% when '12' %} Diciembre
+      {% endcase %} de 
+      {{ post.date | date: "%Y" }}
+    </time>
+
+    {{ post.content }}
+  </article>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" title="Atrás" href="{{ paginator.next_page_path | prepend: site.baseurl }}">
+        <img class="emoji" title="Atrás" alt="Atrás" src="https://assets-cdn.github.com/images/icons/emoji/unicode/25c0.png" height="20" width="20">
+    </a>
+  {% else %}
+    <span class="pagination-item older" title="Atrás">
+        <img class="emoji" title="Atrás" alt="Atrás" src="https://assets-cdn.github.com/images/icons/emoji/unicode/25c0.png" height="20" width="20">
+    </span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    <a class="pagination-item newer" title="Adelante" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
+        <img class="emoji" title="Adelante" alt="Adelante" src="https://assets-cdn.github.com/images/icons/emoji/unicode/25b6.png" height="20" width="20">
+    </a>
+  {% else %}
+    <span class="pagination-item newer" title="Adelante">
+        <img class="emoji" title="Adelante" alt="Adelante" src="https://assets-cdn.github.com/images/icons/emoji/unicode/25b6.png" height="20" width="20">
+    </span>
+  {% endif %}
+</div>

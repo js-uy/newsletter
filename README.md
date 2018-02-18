@@ -1,2 +1,3 @@
-# newsletters
-Place to host the community's newsletters
+# newsletter.js.uy
+
+Blog con el contenido de las newsletters de js.uy
